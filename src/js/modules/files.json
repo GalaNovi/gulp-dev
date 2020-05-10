@@ -1,0 +1,7 @@
+[
+  "src/js/modules/polyfill-picture.js",
+  "src/js/modules/polyfill-ofi.js",
+  "src/js/modules/plugin-swiper.js",
+  "src/js/modules/footer.js",
+  "src/js/modules/init.js"
+]
