@@ -11,7 +11,7 @@
 
   border: none;
   outline: none;
-  background-image: @gradient-secondary;
+  background-image: $gradient-secondary;
   border-radius: 50%;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.7);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -37,13 +37,13 @@
   transform: rotate(90deg);
 }
 
-@media (max-width: @tablet-width) {
+@media (max-width: $tablet-width) {
   .button-up {
     bottom: 130px;
   }
 }
 
-@media (max-width: @mobile-width) {
+@media (max-width: $mobile-width) {
   .button-up {
     right: -80px;
     bottom: 125px;

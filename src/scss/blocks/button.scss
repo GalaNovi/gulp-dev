@@ -30,7 +30,7 @@
   &--close {
     position: absolute;
 
-    color: @modal-close-color;
+    color: $modal-close-color;
     font-size: 24px;
     line-height: 24px;
     top: 15px;
@@ -39,7 +39,7 @@
     &:hover,
     &:focus,
     &:active {
-      color: @modal-close-color-hover;
+      color: $modal-close-color-hover;
     }
   }
 }

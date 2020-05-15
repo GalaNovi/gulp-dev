@@ -8,7 +8,7 @@
   left: 0;
   padding: 30px;
 
-  background-color: @background-overlay;
+  background-color: $background-overlay;
   opacity: 0;
   transition: opacity 0.3s;
   overflow: auto;

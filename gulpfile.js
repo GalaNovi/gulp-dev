@@ -29,16 +29,16 @@ var lazyRequireTask = function (taskName, path, options) {
   });
 };
 
-// Собирает первичные стили из LESS, и сжимает для прода
+// Собирает первичные стили из SCSS, и сжимает для прода
 lazyRequireTask('style:first', './tasks/style', {
-  src: sourceFolder + '/less/' + cssFirstFileName + '.less',
+  src: sourceFolder + '/scss/' + cssFirstFileName + '.scss',
   dev: developmentFolder,
   build: buildFolder
 });
 
-// Собирает вторичные стили из LESS, и сжимает для прода
+// Собирает вторичные стили из SCSS, и сжимает для прода
 lazyRequireTask('style:second', './tasks/style', {
-  src: sourceFolder + '/less/' + cssSecondFileName + '.less',
+  src: sourceFolder + '/scss/' + cssSecondFileName + '.scss',
   dev: developmentFolder,
   build: buildFolder
 });
@@ -153,9 +153,9 @@ lazyRequireTask('clean', './tasks/clean', {
 gulp.task('watch', function () { // Запускает вотчер
 	gulp.watch(sourceFolder + '/files/**/*.*', gulp.series('files:copy'));
 	gulp.watch(sourceFolder + '/**/*.html', gulp.series('html'));
-	gulp.watch(sourceFolder + '/less/**/*.*', gulp.series('style'));
+	gulp.watch(sourceFolder + '/scss/**/*.*', gulp.series('style'));
 	gulp.watch(sourceFolder + '/css/**/*.css', gulp.series('css:copy'));
-	// gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts', 'fonts:copy'));
+	gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts', 'fonts:copy'));
 	gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts:copy'));
 	gulp.watch(sourceFolder + '/images/**/inline*.svg', gulp.series('sprite:svg'));
 	gulp.watch([sourceFolder + '/images/**/*.*', '!' + sourceFolder + '/images/**/inline*.svg'], gulp.parallel('images', 'webp'));
