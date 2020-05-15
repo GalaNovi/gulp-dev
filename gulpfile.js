@@ -5,7 +5,8 @@ const sourceFolder = 'src';
 const developmentFolder = 'dev';
 const buildFolder = 'build';
 const svgSpriteName = 'sprite';
-const cssFileName = 'style';
+const cssFirstFileName = 'style-primary';
+const cssSecondFileName = 'style-secondary';
 const jsFileName = 'all';
 const jsModulesFilePath = './' + sourceFolder + '/js/modules/files.json';
 const gulp = require('gulp');
@@ -28,12 +29,22 @@ var lazyRequireTask = function (taskName, path, options) {
   });
 };
 
-// Собирает style.css из LESS, расставляет префиксы и сжимает для прода
-lazyRequireTask('style', './tasks/style', {
-  src: sourceFolder + '/less/' + cssFileName + '.less',
+// Собирает первичные стили из LESS, и сжимает для прода
+lazyRequireTask('style:first', './tasks/style', {
+  src: sourceFolder + '/less/' + cssFirstFileName + '.less',
   dev: developmentFolder,
   build: buildFolder
 });
+
+// Собирает вторичные стили из LESS, и сжимает для прода
+lazyRequireTask('style:second', './tasks/style', {
+  src: sourceFolder + '/less/' + cssSecondFileName + '.less',
+  dev: developmentFolder,
+  build: buildFolder
+});
+
+// Группирует задачи по работе со стилями
+gulp.task('style', gulp.parallel('style:first', 'style:second'));
 
 // Из файлов svg для инлайновой вставки делает спрайт и бросает его в папку img. Для прода оптимизирует
 lazyRequireTask('sprite:svg', './tasks/sprite-svg', {
@@ -49,7 +60,8 @@ lazyRequireTask('html', './tasks/html', {
   dev: developmentFolder,
   build: buildFolder,
   spriteName: svgSpriteName + '.svg',
-  cssName: cssFileName,
+  firstСssName: cssFirstFileName,
+  secondСssName: cssSecondFileName,
   jsName: jsFileName
 });
 
@@ -143,7 +155,7 @@ gulp.task('watch', function () { // Запускает вотчер
 	gulp.watch(sourceFolder + '/**/*.html', gulp.series('html'));
 	gulp.watch(sourceFolder + '/less/**/*.*', gulp.series('style'));
 	gulp.watch(sourceFolder + '/css/**/*.css', gulp.series('css:copy'));
-	gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts', 'fonts:copy'));
+	// gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts', 'fonts:copy'));
 	gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts:copy'));
 	gulp.watch(sourceFolder + '/images/**/inline*.svg', gulp.series('sprite:svg'));
 	gulp.watch([sourceFolder + '/images/**/*.*', '!' + sourceFolder + '/images/**/inline*.svg'], gulp.parallel('images', 'webp'));

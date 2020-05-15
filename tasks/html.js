@@ -14,7 +14,17 @@ module.exports = function (options) {
         prefix: '@@',
         basepath: '@file'
       }))
-      .pipe(plugins.if(!isDevelopment, combine(plugins.replace(options.cssName + '.css', options.cssName + '.min.css'), plugins.replace(options.dev + '/images/svg/' + options.spriteName, options.build + '/images/svg/' + options.spriteName), plugins.replace(options.jsName + '.js', options.jsName + '.min.js'))))
+      .pipe(
+        plugins.if(
+          !isDevelopment,
+          combine(
+            plugins.replace(options.firstСssName + '.css', options.firstСssName + '.min.css'),
+            plugins.replace(options.secondСssName + '.css', options.secondСssName + '.min.css'),
+            plugins.replace(options.dev + '/images/svg/' + options.spriteName, options.build + '/images/svg/' + options.spriteName),
+            plugins.replace(options.jsName + '.js', options.jsName + '.min.js')
+          )
+        )
+      )
       .pipe(plugins.htmlhint({
         "tagname-lowercase": [
           "feOffset",

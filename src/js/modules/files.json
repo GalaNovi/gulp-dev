@@ -1,7 +1,10 @@
 [
-  "src/js/modules/polyfill-picture.js",
-  "src/js/modules/polyfill-ofi.js",
-  "src/js/modules/plugin-swiper.js",
+  "src/js/polyfills/polyfill-array-from.js",
+  "src/js/polyfills/polyfill-closest.js",
+  "src/js/polyfills/polyfill-picture.js",
+  "src/js/polyfills/polyfill-ofi.js",
+  "src/js/polyfills/polyfill-find.js",
   "src/js/modules/footer.js",
+  "src/js/modules/modal.js",
   "src/js/modules/init.js"
 ]

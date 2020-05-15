@@ -4,6 +4,7 @@
   padding: 0;
 
   vertical-align: top;
+  text-decoration: none;
 
   border: none;
   outline: none;
@@ -13,69 +14,32 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
   &--primary {
-    position: relative;
-    padding: 0.75rem 3rem;
 
-    color: #ffffff;
-    font-size: 1.3125rem;
-    font-weight: 500;
-
-    border-radius: 2.1875rem;
-    background-image: @gradient-seondary;
-
-    &::before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-
-      content: "";
-
-      background-color: rgba(0, 0, 0, 0.1);
-      border-radius: 2.1875rem;
-      transition: opacity 0.3s ease-in-out;
-      opacity: 0;
-    }
-
-    &:hover {
-      &::before {
-        opacity: 1;
-      }
-    }
   }
 
   &--secondary {
-    position: relative;
-    padding: 1rem 1.875rem 1.0625rem;
+    
+  }
 
-    color: #ffffff;
-    font-size: 0.9375rem;
-    font-weight: 500;
+  &--close {
+    position: absolute;
 
-    border-radius: 2.1875rem;
-    background-color: @success-color;
+    color: @modal-close-color;
+    font-size: 24px;
+    line-height: 24px;
+    top: 15px;
+    right: 20px;
 
-    &::before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-
-      content: "";
-
-      background-color: rgba(0, 0, 0, 0.1);
-      border-radius: 2.1875rem;
-      transition: opacity 0.3s ease-in-out;
-      opacity: 0;
-    }
-
-    &:hover {
-      &::before {
-        opacity: 1;
-      }
+    &:hover,
+    &:focus,
+    &:active {
+      color: @modal-close-color-hover;
     }
   }
 }

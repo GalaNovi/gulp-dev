@@ -22,3 +22,37 @@
   padding-left: 8px;
   border-left: 2px solid rgba(0, 0, 0, 0.03);
 }
+
+.visually-hidden() {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.visually-visible() {
+  position: initial;
+
+  width: initial;
+  height: initial;
+  margin: initial;
+  border: initial;
+  padding: initial;
+
+  white-space: initial;
+
+  clip-path: initial;
+
+  clip: initial;
+  overflow: initial;
+}
