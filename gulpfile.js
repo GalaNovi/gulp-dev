@@ -156,7 +156,6 @@ gulp.task('watch', function () { // Запускает вотчер
 	gulp.watch(sourceFolder + '/scss/**/*.*', gulp.series('style'));
 	gulp.watch(sourceFolder + '/css/**/*.css', gulp.series('css:copy'));
 	gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts', 'fonts:copy'));
-	gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts:copy'));
 	gulp.watch(sourceFolder + '/images/**/inline*.svg', gulp.series('sprite:svg'));
 	gulp.watch([sourceFolder + '/images/**/*.*', '!' + sourceFolder + '/images/**/inline*.svg'], gulp.parallel('images', 'webp'));
 	gulp.watch(sourceFolder + '/js/modules/**/*.js', gulp.series('scripts:modules'));

@@ -5,7 +5,10 @@
 
   window.utils = {
     scrollTop: () => { // Функция прокручивает страницу в начало
-      $('html, body').animate({scrollTop: 0}, 500);
+      const isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+      const delay = isIE11 ? 500 : 0;
+      
+      $(`html, body`).animate({scrollTop: 0}, delay);
       return false;
     }
   };
